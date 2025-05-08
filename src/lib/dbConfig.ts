@@ -40,3 +40,6 @@ const conectDB = async () => {
 
   return cached;
 };
+
+
+export default conectDB;
