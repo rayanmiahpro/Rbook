@@ -15,13 +15,14 @@ export interface IUser extends Document {
   videos: Array<any>;
   images: Array<any>;
   posts: Array<any>;
+  flollowers: Array<any>;
   createdAt: Date;
   updatedAt: Date;
 }
 
 const userSchema = new Schema<IUser>(
   {
-    FullName: { type: String, required: true,},
+    FullName: { type: String, required: true },
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     varifyCode: { type: String, required: true },
@@ -48,7 +49,14 @@ const userSchema = new Schema<IUser>(
         ref: "Post",
       },
     ],
+    flollowers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
+
   { timestamps: true }
 );
 
